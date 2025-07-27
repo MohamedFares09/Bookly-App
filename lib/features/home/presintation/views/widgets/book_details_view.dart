@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class BookDetailsView extends StatelessWidget {
   const BookDetailsView({super.key});
-
+  static String id = '/router';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BookDetailsViewBody(),
+      body: SafeArea(child: BookDetailsViewBody()),
     );
   }
 }
