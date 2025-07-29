@@ -1,8 +1,8 @@
 
 import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/features/home/presintation/views/widgets/app_bar_book_details.dart';
-import 'package:bookly_app/features/home/presintation/views/widgets/custom_book_image.dart';
-import 'package:bookly_app/features/home/presintation/views/widgets/rating_book.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/app_bar_book_details.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/rating_book.dart';
 import 'package:flutter/material.dart';
 
 class DetailsBookSection extends StatelessWidget {
