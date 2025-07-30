@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class RatingBook extends StatelessWidget {
-  const RatingBook({super.key , this.mainAxisAlignment = MainAxisAlignment.start});
+  const RatingBook(
+      {super.key, this.mainAxisAlignment = MainAxisAlignment.start});
   final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
