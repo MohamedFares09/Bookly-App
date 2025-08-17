@@ -1,3 +1,4 @@
+
 import 'package:bookly_app/core/errors/faileur.dart';
 import 'package:bookly_app/core/utils/api_services.dart';
 import 'package:bookly_app/features/home/data/Repos/home_repo.dart';
@@ -13,31 +14,36 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<BookModel>>> getBestSellerBooks() async {
     try {
       dynamic data = await apiServices.get(endPoint: "volumes?q=Programing");
+      
       List<BookModel> books = [];
-      for (var element in data) {
-        books.add(BookModel.fromJson(element));
+      if (data["items"] != null) {
+        for (var element in data["items"]) {
+          books.add(BookModel.fromJson(element));
+        }
       }
       return right(books);
     } catch (e) {
       if (e is DioException) {
-          handleDioException(e); // This will throw a Failure
+        handleDioException(e); // This will throw a Failure
       }
       return left(ServerFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> getBooks()async {
-       try {
+  Future<Either<Failure, List<BookModel>>> getBooks() async {
+    try {
       dynamic data = await apiServices.get(endPoint: "volumes?q=Programing");
       List<BookModel> books = [];
-      for (var element in data) {
-        books.add(BookModel.fromJson(element));
+      if (data["items"] != null) {
+        for (var element in data["items"]) {
+          books.add(BookModel.fromJson(element));
+        }
       }
       return right(books);
     } catch (e) {
       if (e is DioException) {
-          handleDioException(e); // This will throw a Failure
+        handleDioException(e); // This will throw a Failure
       }
       return left(ServerFailure(e.toString()));
     }
