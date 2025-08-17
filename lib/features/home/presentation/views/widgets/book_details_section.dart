@@ -15,7 +15,7 @@ class DetailsBookSection extends StatelessWidget {
         AppBarBookDetails(),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.28),
-          child: CustomBookImage(),
+          child: CustomBookImage(imageUrl: 'https://share.google/images/AmV9apaYZwH0VwruP',),
         ),
         SizedBox(
           height: 20,

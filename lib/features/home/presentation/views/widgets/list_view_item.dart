@@ -15,10 +15,15 @@ class ListViewItems extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.3,
             child: ListView.builder(
-              itemCount: state.book.length,
+                physics: const BouncingScrollPhysics(),
+                itemCount: state.book.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return CustomBookImage();
+                  return CustomBookImage(
+                    imageUrl:
+                        state.book[index].volumeInfo!.imageLinks!.thumbnail ??
+                            "https://share.google/images/AmV9apaYZwH0VwruP",
+                  );
                 }),
           );
         } else if (state is FeatureBooksFailuer) {
