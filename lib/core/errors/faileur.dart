@@ -29,7 +29,7 @@ void handleDioException(DioException e) {
 
     case DioExceptionType.badResponse:
       final statusCode = e.response?.statusCode;
-      switch (statusCode) {
+      switch (statusCode) { 
         case 400:
           throw ServerFailure("Bad request");
         case 401:

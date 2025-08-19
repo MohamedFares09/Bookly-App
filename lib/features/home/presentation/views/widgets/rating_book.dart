@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class RatingBook extends StatelessWidget {
-  const RatingBook(
-      {super.key, this.mainAxisAlignment = MainAxisAlignment.start});
-  final MainAxisAlignment mainAxisAlignment;
+  const RatingBook({
+    super.key, required this.rating, required this.count,
+  });
+  final int rating; 
+  final int count ; 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: mainAxisAlignment,
+   
       children: [
         Icon(
           Icons.star,
@@ -16,11 +18,11 @@ class RatingBook extends StatelessWidget {
         SizedBox(
           width: 3,
         ),
-        Text('4.8'),
+        Text('$rating'),
         SizedBox(
           width: 5,
         ),
-        Text('(2250)')
+        Text('($count)')
       ],
     );
   }

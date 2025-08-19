@@ -37,7 +37,8 @@ class DetailsBookSection extends StatelessWidget {
           ),
         ),
         RatingBook(
-          mainAxisAlignment: MainAxisAlignment.center,
+         rating: 0,
+         count: 0,
         ),
       ],
     );
