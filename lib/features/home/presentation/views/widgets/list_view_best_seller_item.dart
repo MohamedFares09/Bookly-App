@@ -1,6 +1,6 @@
-// list_view_best_seller_item.dart
+
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
-import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+
 import 'package:bookly_app/features/home/presentation/view_model/NewsedBooks/newsed_book_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_item.dart';
 import 'package:flutter/material.dart';

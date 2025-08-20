@@ -13,7 +13,7 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failure, List<BookModel>>> getBestSellerBooks() async {
     try {
-      dynamic data = await apiServices.get(endPoint: "volumes?q=Programing");
+      dynamic data = await apiServices.get(endPoint: "volumes?q=cumputer science");
       
       List<BookModel> books = [];
       if (data["items"] != null) {
@@ -22,12 +22,11 @@ class HomeRepoImpl implements HomeRepo {
         }
       }
       return right(books);
-    } catch (e) {
-      if (e is DioException) {
-        handleDioException(e); // This will throw a Failure
-      }
-      return left(ServerFailure(e.toString()));
-    }
+    } on DioException catch (e) { 
+    return Left(handleDioException(e));  
+  } catch (e) {
+    return Left(ServerFailure("Unexpected error: $e"));
+  }
   }
 
   @override
@@ -41,11 +40,28 @@ class HomeRepoImpl implements HomeRepo {
         }
       }
       return right(books);
-    } catch (e) {
-      if (e is DioException) {
-        handleDioException(e); // This will throw a Failure
+    }on DioException catch (e) {
+    return Left(handleDioException(e));
+  } catch (e) {
+    return Left(ServerFailure("Unexpected error: $e"));
+  }
+  }
+  
+  @override
+  Future<Either<Failure, List<BookModel>>> getSimilerBooks() async{
+  try {
+      dynamic data = await apiServices.get(endPoint: "volumes?Filtering=free-ebooks&Sorting=relevance&q=Programing");
+      List<BookModel> books = [];
+      if (data["items"] != null) {
+        for (var element in data["items"]) {
+          books.add(BookModel.fromJson(element));
+        }
       }
-      return left(ServerFailure(e.toString()));
-    }
+      return right(books);
+    }on DioException catch (e) {
+    return Left(handleDioException(e));
+  } catch (e) {
+    return Left(ServerFailure("Unexpected error: $e"));
+  }
   }
 }
