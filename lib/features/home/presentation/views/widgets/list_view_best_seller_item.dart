@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ListViewBestSellerItem extends StatelessWidget {
-  const ListViewBestSellerItem({super.key});
+  const  ListViewBestSellerItem({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,10 @@
+import 'package:bookly_app/core/utils/function/url_custome_launcher.dart';
 import 'package:bookly_app/core/widgets/custom_button.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_details_section.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/list_view_item_book_details.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key, required this.bookModel});
@@ -23,12 +25,18 @@ class BookDetailsViewBody extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomButton(
-                  text: "19.99",
+                  bookModel: bookModel,
+                  text: "Free",
                 ),
               ),
               Expanded(
                 child: CustomButton(
-                  text: "Free Preview",
+                  onPressed: () async {
+                    urlCustomLancher(
+                        context, bookModel.volumeInfo!.previewLink);
+                  },
+                  bookModel: bookModel,
+                  text: getText(bookModel),
                   backgroundColor: WidgetStatePropertyAll(Colors.white),
                   shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
@@ -48,5 +56,13 @@ class BookDetailsViewBody extends StatelessWidget {
         ListViewItemsBookDetails()
       ],
     );
+  }
+
+  String getText(BookModel bookmodel) {
+    if (bookmodel.volumeInfo!.previewLink == null) {
+      return "Not Avaliable";
+    } else {
+      return "Preview";
+    }
   }
 }
