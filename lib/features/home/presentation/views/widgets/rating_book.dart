@@ -4,7 +4,7 @@ class RatingBook extends StatelessWidget {
   const RatingBook({
     super.key, required this.rating, required this.count,
   });
-  final int rating; 
+  final num rating; 
   final int count ; 
   @override
   Widget build(BuildContext context) {

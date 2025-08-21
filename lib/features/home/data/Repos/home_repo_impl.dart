@@ -48,8 +48,8 @@ class HomeRepoImpl implements HomeRepo {
   }
   
   @override
-  Future<Either<Failure, List<BookModel>>> getSimilerBooks() async{
-  try {
+  Future<Either<Failure, List<BookModel>>> getSimilerBooks({required String categeroy})async {
+   try {
       dynamic data = await apiServices.get(endPoint: "volumes?Filtering=free-ebooks&Sorting=relevance&q=Programing");
       List<BookModel> books = [];
       if (data["items"] != null) {
@@ -64,4 +64,6 @@ class HomeRepoImpl implements HomeRepo {
     return Left(ServerFailure("Unexpected error: $e"));
   }
   }
+  
+
 }
